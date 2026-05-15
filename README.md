@@ -1,6 +1,6 @@
 # MissionReady
 
-ASVAB prep platform. Monorepo for web (Next.js 16.2), worker (Node + BullMQ), and ai (Python + FastAPI), deployed to Railway.
+ASVAB prep platform. Monorepo for web (Next.js 16.2), worker (Node + BullMQ), and ai (Python + FastAPI).
 
 ## Quick start (local dev)
 
