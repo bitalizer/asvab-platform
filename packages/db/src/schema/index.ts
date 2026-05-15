@@ -3,3 +3,4 @@
 // Domain tables (user_profiles, questions, lessons, etc.) added later.
 
 export * from './auth';
+export * from './users';
