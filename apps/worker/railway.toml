@@ -1,0 +1,15 @@
+# Build and deploy config for the worker service.
+# Railway should be configured with:
+#   Root Directory: /
+#   Watch Paths:    apps/worker/**, packages/**, pnpm-lock.yaml, package.json
+#   Config Path:    apps/worker/railway.toml
+
+[build]
+builder = "NIXPACKS"
+buildCommand = "pnpm install --frozen-lockfile && pnpm --filter @asvab/worker build"
+
+[deploy]
+startCommand = "pnpm --filter @asvab/worker start"
+restartPolicyType = "ALWAYS"
+# No healthcheckPath. The worker is headless: it has no HTTP server.
+# Railway will use process exit codes plus the restart policy to keep it alive.

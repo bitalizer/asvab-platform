@@ -1,0 +1,16 @@
+# Build and deploy config for the web service.
+# Railway should be configured with:
+#   Root Directory: /
+#   Watch Paths:    apps/web/**, packages/**, pnpm-lock.yaml, package.json
+#   Config Path:    apps/web/railway.toml
+
+[build]
+builder = "NIXPACKS"
+buildCommand = "pnpm install --frozen-lockfile && pnpm --filter @asvab/web build"
+
+[deploy]
+startCommand = "pnpm --filter @asvab/web start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 5
