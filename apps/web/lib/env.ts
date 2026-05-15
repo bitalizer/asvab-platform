@@ -11,6 +11,7 @@ export const envSchema = z.object({
     }),
   BETTER_AUTH_URL: z.string().url(),
   AI_SERVICE_URL: z.string().url(),
+  NEXT_PUBLIC_APP_URL: z.string().url().optional(),
   GOOGLE_CLIENT_ID: z.string().optional(),
   GOOGLE_CLIENT_SECRET: z.string().optional(),
   APPLE_CLIENT_ID: z.string().optional(),
