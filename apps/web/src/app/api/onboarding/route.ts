@@ -1,5 +1,5 @@
+import { onboardingSchema } from '@/features/onboarding/schema';
 import { getSession, upsertProfileFromOnboarding } from '@/lib/data';
-import { onboardingSchema } from '@/lib/onboarding';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';

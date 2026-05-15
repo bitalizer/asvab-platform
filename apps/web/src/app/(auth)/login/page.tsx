@@ -1,7 +1,5 @@
 'use client';
 
-import { AuthCard } from '@/components/auth/auth-card';
-import { SsoButtons } from '@/components/auth/sso-buttons';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -12,6 +10,8 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
+import { AuthCard } from '@/features/auth';
+import { SsoButtons } from '@/features/auth';
 import { authClient } from '@/lib/auth-client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Link from 'next/link';

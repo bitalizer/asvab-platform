@@ -1,6 +1,15 @@
 import { Icon } from '@/components/primitives/icon';
 import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
+import {
+  AfqtCard,
+  ContinueLesson,
+  CountdownCard,
+  RecentBadges,
+  SectionMastery,
+  TodayPlan,
+  WeeklyStats,
+} from '@/features/dashboard';
 import { getProfile, getSession } from '@/lib/data';
 import {
   PLACEHOLDER_ACHIEVEMENTS,
@@ -9,13 +18,6 @@ import {
   PLACEHOLDER_TODAY_TASKS,
   PLACEHOLDER_USER,
 } from '@/lib/placeholder-data';
-import { AfqtCard } from './_components/afqt-card';
-import { ContinueLesson } from './_components/continue-lesson';
-import { CountdownCard } from './_components/countdown-card';
-import { RecentBadges } from './_components/recent-badges';
-import { SectionMastery } from './_components/section-mastery';
-import { TodayPlan } from './_components/today-plan';
-import { WeeklyStats } from './_components/weekly-stats';
 
 export default async function DashboardPage() {
   const session = await getSession();

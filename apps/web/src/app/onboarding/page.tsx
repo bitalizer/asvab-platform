@@ -2,6 +2,18 @@
 
 import { Icon } from '@/components/primitives/icon';
 import { Button } from '@/components/ui/button';
+import {
+  type HoursBucket,
+  StepBackground,
+  StepBranch,
+  StepDiagnostic,
+  StepPlan,
+  StepSchedule,
+  StepTarget,
+  StepTestDate,
+  StepWelcome,
+  WizardShell,
+} from '@/features/onboarding';
 import { authClient } from '@/lib/auth-client';
 import type {
   Branch,
@@ -14,15 +26,6 @@ import type {
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { StepWelcome } from './_components/step-1-welcome';
-import { StepBranch } from './_components/step-2-branch';
-import { StepTarget } from './_components/step-3-target';
-import { StepTestDate } from './_components/step-4-test-date';
-import { type HoursBucket, StepSchedule } from './_components/step-5-schedule';
-import { StepBackground } from './_components/step-6-background';
-import { StepDiagnostic } from './_components/step-7-diagnostic';
-import { StepPlan } from './_components/step-8-plan';
-import { WizardShell } from './_components/wizard-shell';
 
 const TOTAL_STEPS = 8;
 const HOURS_TO_INTEGER: Record<HoursBucket, number> = { '1-3': 2, '4-7': 5, '8-15': 11, '15+': 20 };

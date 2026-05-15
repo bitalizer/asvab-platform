@@ -1,7 +1,7 @@
 import { Icon } from '@/components/primitives/icon';
 import { cn } from '@/lib/utils';
 import type { Branch } from '@asvab/db';
-import { BRANCHES } from './branch-options';
+import { BRANCHES } from '../branch-options';
 
 type Props = {
   selected: Branch[];

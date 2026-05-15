@@ -1,7 +1,7 @@
 'use client';
 
-import { AuthCard } from '@/components/auth/auth-card';
 import { Button } from '@/components/ui/button';
+import { AuthCard } from '@/features/auth';
 import { authClient } from '@/lib/auth-client';
 import { useState } from 'react';
 import { toast } from 'sonner';

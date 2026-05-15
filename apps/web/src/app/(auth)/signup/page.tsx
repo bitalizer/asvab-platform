@@ -1,7 +1,5 @@
 'use client';
 
-import { AuthCard } from '@/components/auth/auth-card';
-import { SsoButtons } from '@/components/auth/sso-buttons';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -14,6 +12,8 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { AuthCard } from '@/features/auth';
+import { SsoButtons } from '@/features/auth';
 import { authClient } from '@/lib/auth-client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
