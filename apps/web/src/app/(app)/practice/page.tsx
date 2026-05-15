@@ -1,8 +1,7 @@
 import { Icon } from '@/components/primitives/icon';
 import { Pill } from '@/components/primitives/pill';
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 import { PLACEHOLDER_SECTIONS } from '@/lib/placeholder-data';
 
 const SPECIAL_MODES = [
@@ -28,17 +27,14 @@ const SPECIAL_MODES = [
   },
 ];
 
-export default async function PracticePage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function PracticePage() {
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="PRACTICE"
-      title="Practice by section"
-      subtitle="Drill specific sections or run a mixed set."
-    >
+    <>
+      <PageHeader
+        eyebrow="PRACTICE"
+        title="Practice by section"
+        subtitle="Drill specific sections or run a mixed set."
+      />
       {/* Section cards */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {PLACEHOLDER_SECTIONS.map((section) => (
@@ -108,6 +104,6 @@ export default async function PracticePage() {
           ))}
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

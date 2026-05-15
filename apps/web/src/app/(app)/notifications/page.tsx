@@ -1,8 +1,7 @@
 import { Icon } from '@/components/primitives/icon';
 import type { IconName } from '@/components/primitives/icon';
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 import { PLACEHOLDER_NOTIFICATIONS } from '@/lib/placeholder-data';
 import type { PlaceholderNotification } from '@/lib/placeholder-data';
 
@@ -16,17 +15,14 @@ const TYPE_ICON: Record<PlaceholderNotification['type'], IconName> = {
 
 const FILTER_PILLS = ['All', 'Reminders', 'Achievements', 'Plan updates', 'Announcements'];
 
-export default async function NotificationsPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function NotificationsPage() {
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="NOTIFICATIONS"
-      title="Recent activity"
-      subtitle="Reminders, plan changes, and announcements."
-    >
+    <>
+      <PageHeader
+        eyebrow="NOTIFICATIONS"
+        title="Recent activity"
+        subtitle="Reminders, plan changes, and announcements."
+      />
       {/* Filter pills */}
       <div className="mb-5 flex flex-wrap gap-1.5">
         {FILTER_PILLS.map((pill) => (
@@ -83,6 +79,6 @@ export default async function NotificationsPage() {
           ))}
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

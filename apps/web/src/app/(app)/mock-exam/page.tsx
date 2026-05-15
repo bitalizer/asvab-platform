@@ -1,6 +1,5 @@
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 
 const EXAM_TYPES = [
   {
@@ -35,17 +34,14 @@ const EXAM_TYPES = [
   },
 ];
 
-export default async function MockExamPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function MockExamPage() {
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="MOCK EXAMS"
-      title="Test under real conditions"
-      subtitle="Practice the exam day. Adaptive (CAT) or paper (P&P)."
-    >
+    <>
+      <PageHeader
+        eyebrow="MOCK EXAMS"
+        title="Test under real conditions"
+        subtitle="Practice the exam day. Adaptive (CAT) or paper (P&P)."
+      />
       {/* Exam type cards */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {EXAM_TYPES.map((exam) => (
@@ -77,6 +73,6 @@ export default async function MockExamPage() {
           <p className="text-sm text-ink-3">No mock exams yet — take your first above.</p>
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

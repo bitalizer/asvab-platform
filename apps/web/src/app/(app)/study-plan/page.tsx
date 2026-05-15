@@ -1,7 +1,6 @@
 import { Icon } from '@/components/primitives/icon';
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 import { PLACEHOLDER_TODAY_TASKS } from '@/lib/placeholder-data';
 import { InertIntensitySlider, InertRestDayCheckboxes } from './_components/inert-controls';
 
@@ -23,17 +22,14 @@ const typeColorMap: Record<string, string> = {
   drill: 'bg-danger-soft text-danger-deep',
 };
 
-export default async function StudyPlanPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function StudyPlanPage() {
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="STUDY PLAN"
-      title="Your weekly schedule"
-      subtitle="Adapt to your test date, hours, and weak sections."
-    >
+    <>
+      <PageHeader
+        eyebrow="STUDY PLAN"
+        title="Your weekly schedule"
+        subtitle="Adapt to your test date, hours, and weak sections."
+      />
       <div className="flex flex-col gap-6 lg:flex-row">
         {/* Main calendar area */}
         <div className="flex-1 min-w-0">
@@ -111,6 +107,6 @@ export default async function StudyPlanPage() {
           </div>
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

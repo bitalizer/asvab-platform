@@ -1,8 +1,7 @@
 import { Pill } from '@/components/primitives/pill';
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { getSession } from '@/lib/data';
 
 type QuestionStatus = 'Attempted' | 'Correct' | 'Wrong' | 'Bookmarked' | 'Unattempted';
 type Difficulty = 'Easy' | 'Medium' | 'Hard';
@@ -99,17 +98,14 @@ function statusPillVariant(s: QuestionStatus) {
   return 'default' as const;
 }
 
-export default async function QuestionBankPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function QuestionBankPage() {
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="QUESTION BANK"
-      title="Browse every question"
-      subtitle="Filter, search, and add to custom practice sets."
-    >
+    <>
+      <PageHeader
+        eyebrow="QUESTION BANK"
+        title="Browse every question"
+        subtitle="Filter, search, and add to custom practice sets."
+      />
       {/* Filter row */}
       <div className="mb-5 flex flex-wrap items-center gap-2">
         <select
@@ -196,6 +192,6 @@ export default async function QuestionBankPage() {
           ))}
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

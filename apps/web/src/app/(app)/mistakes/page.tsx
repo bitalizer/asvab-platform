@@ -1,23 +1,19 @@
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 import { PLACEHOLDER_MISTAKES, PLACEHOLDER_SECTIONS } from '@/lib/placeholder-data';
 
 function truncate(str: string, max: number) {
   return str.length > max ? `${str.slice(0, max)}…` : str;
 }
 
-export default async function MistakesPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function MistakesPage() {
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="MISTAKES"
-      title="Review what tripped you up"
-      subtitle="Auto-curated from your past sessions."
-    >
+    <>
+      <PageHeader
+        eyebrow="MISTAKES"
+        title="Review what tripped you up"
+        subtitle="Auto-curated from your past sessions."
+      />
       {/* Filter bar */}
       <div className="mb-5 flex flex-wrap items-center gap-3">
         <select
@@ -96,6 +92,6 @@ export default async function MistakesPage() {
       <div className="mt-5 flex justify-end">
         <Button variant="outline">Retry all</Button>
       </div>
-    </AppShell>
+    </>
   );
 }

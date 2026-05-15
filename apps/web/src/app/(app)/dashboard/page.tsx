@@ -1,5 +1,5 @@
 import { Icon } from '@/components/primitives/icon';
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
 import { getProfile, getSession } from '@/lib/data';
 import {
@@ -59,21 +59,21 @@ export default async function DashboardPage() {
   ];
 
   return (
-    <AppShell
-      user={session.user}
-      title={`Welcome back, ${firstName}.`}
-      subtitle={
-        <>
-          {daysAway} days from your test. You're{' '}
-          <span className="text-brand">tracking ahead of schedule</span>.
-        </>
-      }
-      action={
-        <Button>
-          <Icon name="play" size={12} /> Start today's session
-        </Button>
-      }
-    >
+    <>
+      <PageHeader
+        title={`Welcome back, ${firstName}.`}
+        subtitle={
+          <>
+            {daysAway} days from your test. You're{' '}
+            <span className="text-brand">tracking ahead of schedule</span>.
+          </>
+        }
+        action={
+          <Button>
+            <Icon name="play" size={12} /> Start today's session
+          </Button>
+        }
+      />
       <AfqtCard
         currentAfqt={PLACEHOLDER_USER.currentAfqt}
         targetAfqt={targetAfqt}
@@ -101,6 +101,6 @@ export default async function DashboardPage() {
           totalCount={PLACEHOLDER_ACHIEVEMENTS.length}
         />
       </div>
-    </AppShell>
+    </>
   );
 }

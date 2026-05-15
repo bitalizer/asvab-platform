@@ -1,7 +1,6 @@
 import { Pill } from '@/components/primitives/pill';
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 import { PLACEHOLDER_LESSONS, PLACEHOLDER_SECTIONS } from '@/lib/placeholder-data';
 import type { PlaceholderLesson } from '@/lib/placeholder-data';
 
@@ -56,19 +55,16 @@ function LessonCard({ lesson }: { lesson: PlaceholderLesson }) {
   );
 }
 
-export default async function LearnPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function LearnPage() {
   const recommended = PLACEHOLDER_LESSONS.filter((l) => l.sectionId === 'mk');
 
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="LESSONS"
-      title="Pick something to learn"
-      subtitle="Browse by section or pick up where you left off."
-    >
+    <>
+      <PageHeader
+        eyebrow="LESSONS"
+        title="Pick something to learn"
+        subtitle="Browse by section or pick up where you left off."
+      />
       {/* Filter bar */}
       <div className="mb-6 flex flex-wrap gap-1.5">
         {SECTION_FILTERS.map((f) => (
@@ -102,6 +98,6 @@ export default async function LearnPage() {
           ))}
         </div>
       </section>
-    </AppShell>
+    </>
   );
 }

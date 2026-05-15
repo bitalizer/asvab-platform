@@ -1,6 +1,5 @@
 import { Icon } from '@/components/primitives/icon';
-import { AppShell } from '@/components/shell/app-shell';
-import { getSession } from '@/lib/data';
+import { PageHeader } from '@/components/shell/page-header';
 import { PLACEHOLDER_MISTAKES, PLACEHOLDER_SECTIONS } from '@/lib/placeholder-data';
 
 // TODO: bookmark data wires up in Plan 05 alongside the practice session
@@ -9,19 +8,16 @@ function truncate(str: string, max: number) {
   return str.length > max ? `${str.slice(0, max)}…` : str;
 }
 
-export default async function BookmarksPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function BookmarksPage() {
   const sampleRows = PLACEHOLDER_MISTAKES.slice(0, 2);
 
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="BOOKMARKS"
-      title="Saved for later"
-      subtitle="Questions you flagged during practice."
-    >
+    <>
+      <PageHeader
+        eyebrow="BOOKMARKS"
+        title="Saved for later"
+        subtitle="Questions you flagged during practice."
+      />
       {/* Friendly empty state message */}
       <div className="mb-6 flex items-start gap-3 rounded-lg border border-line bg-surface p-5 shadow-card">
         <div className="mt-0.5 text-ink-3">
@@ -74,6 +70,6 @@ export default async function BookmarksPage() {
           })}
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

@@ -1,6 +1,5 @@
 import { Icon } from '@/components/primitives/icon';
-import { AppShell } from '@/components/shell/app-shell';
-import { getSession } from '@/lib/data';
+import { PageHeader } from '@/components/shell/page-header';
 import { PLACEHOLDER_ACHIEVEMENTS } from '@/lib/placeholder-data';
 import type { PlaceholderAchievement } from '@/lib/placeholder-data';
 
@@ -20,10 +19,7 @@ const CATEGORY_ORDER: PlaceholderAchievement['category'][] = [
   'special',
 ];
 
-export default async function AchievementsPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function AchievementsPage() {
   const grouped = CATEGORY_ORDER.reduce<
     Partial<Record<PlaceholderAchievement['category'], PlaceholderAchievement[]>>
   >((acc, cat) => {
@@ -33,12 +29,12 @@ export default async function AchievementsPage() {
   }, {});
 
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="ACHIEVEMENTS"
-      title="Earned and in-progress"
-      subtitle="Track milestones, streaks, and section mastery."
-    >
+    <>
+      <PageHeader
+        eyebrow="ACHIEVEMENTS"
+        title="Earned and in-progress"
+        subtitle="Track milestones, streaks, and section mastery."
+      />
       <div className="flex flex-col gap-8">
         {CATEGORY_ORDER.map((cat) => {
           const items = grouped[cat];
@@ -108,6 +104,6 @@ export default async function AchievementsPage() {
           );
         })}
       </div>
-    </AppShell>
+    </>
   );
 }

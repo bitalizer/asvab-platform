@@ -1,6 +1,5 @@
 import { Sparkline } from '@/components/charts/sparkline';
-import { AppShell } from '@/components/shell/app-shell';
-import { getSession } from '@/lib/data';
+import { PageHeader } from '@/components/shell/page-header';
 import { PLACEHOLDER_SECTIONS, PLACEHOLDER_USER } from '@/lib/placeholder-data';
 
 // Generate 14-point AFQT trend climbing from startAfqt to currentAfqt
@@ -28,10 +27,7 @@ function buildHeatmap(weeks = 30): HeatmapWeek[] {
   }));
 }
 
-export default async function ProgressPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function ProgressPage() {
   const { questionsTotal, studyMinutesWeek, currentAfqt, startAfqt } = PLACEHOLDER_USER;
   const afqtTrend = buildAfqtTrend(startAfqt, currentAfqt);
   const heatmap = buildHeatmap();
@@ -47,12 +43,12 @@ export default async function ProgressPage() {
   ];
 
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="PROGRESS"
-      title="Your trajectory"
-      subtitle="Where you started, where you are, where you're going."
-    >
+    <>
+      <PageHeader
+        eyebrow="PROGRESS"
+        title="Your trajectory"
+        subtitle="Where you started, where you are, where you're going."
+      />
       {/* 4-stat top row */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {stats.map((stat) => (
@@ -131,6 +127,6 @@ export default async function ProgressPage() {
           <span>More</span>
         </div>
       </div>
-    </AppShell>
+    </>
   );
 }

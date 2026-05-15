@@ -1,6 +1,5 @@
-import { AppShell } from '@/components/shell/app-shell';
+import { PageHeader } from '@/components/shell/page-header';
 import { Button } from '@/components/ui/button';
-import { getSession } from '@/lib/data';
 import { PLACEHOLDER_FLASHCARD_DECKS } from '@/lib/placeholder-data';
 import type { PlaceholderDeck } from '@/lib/placeholder-data';
 
@@ -33,22 +32,19 @@ function DeckCard({ deck }: { deck: PlaceholderDeck }) {
   );
 }
 
-export default async function FlashcardsPage() {
-  const session = await getSession();
-  if (!session) throw new Error('Session expected — (app)/layout guards this route');
-
+export default function FlashcardsPage() {
   const myDecks = PLACEHOLDER_FLASHCARD_DECKS.filter(
     (d) => d.source === 'user' || d.source === 'auto',
   );
   const publicDecks = PLACEHOLDER_FLASHCARD_DECKS.filter((d) => d.source === 'public');
 
   return (
-    <AppShell
-      user={session.user}
-      eyebrow="FLASHCARDS"
-      title="Spaced repetition"
-      subtitle="Cards you'll see again before you forget them."
-    >
+    <>
+      <PageHeader
+        eyebrow="FLASHCARDS"
+        title="Spaced repetition"
+        subtitle="Cards you'll see again before you forget them."
+      />
       {/* My Decks */}
       <section className="mb-8">
         <div className="mb-3 flex items-center justify-between gap-4">
@@ -73,6 +69,6 @@ export default async function FlashcardsPage() {
           ))}
         </div>
       </section>
-    </AppShell>
+    </>
   );
 }
