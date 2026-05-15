@@ -16,5 +16,17 @@
       "**/.venv/**",
       "apps/ai/**"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "include": ["apps/web/components/ui/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noArrayIndexKey": "off"
+          }
+        }
+      }
+    }
+  ]
 }
