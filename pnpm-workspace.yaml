@@ -7,7 +7,9 @@ packages:
 #   - @biomejs/biome → linter/formatter native binary
 #   - sharp          → Next.js image optimization (libvips bindings)
 #   - unrs-resolver  → Rust-based module resolver used by ESLint config
-# When adding a new dependency that needs to run install scripts, add it here.
+# If `pnpm install` reports ignored build scripts, audit the package, then
+# add it here. Do NOT add packages speculatively; only ones that have
+# legitimately triggered the gate and have been reviewed for safety.
 allowBuilds:
   "@biomejs/biome": true
   sharp: true
