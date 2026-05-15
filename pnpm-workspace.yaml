@@ -9,6 +9,7 @@ packages:
 #   - msgpackr-extract → native msgpack codec used by BullMQ for queue payload serialization
 #   - sharp           → Next.js image optimization (libvips bindings)
 #   - unrs-resolver   → Rust-based module resolver used by ESLint config
+#   - msw             → Mock Service Worker; runs a postinstall script to copy service worker binary
 # If `pnpm install` reports ignored build scripts, audit the package, then
 # add it here. Do NOT add packages speculatively; only ones that have
 # legitimately triggered the gate and have been reviewed for safety.
@@ -16,5 +17,6 @@ allowBuilds:
   "@biomejs/biome": true
   esbuild: true
   msgpackr-extract: true
+  msw: true
   sharp: true
   unrs-resolver: true
