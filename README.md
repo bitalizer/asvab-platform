@@ -1,6 +1,8 @@
-# MissionReady
+# asvab-platform
 
-ASVAB prep platform. Monorepo for web (Next.js 16.2), worker (Node + BullMQ), and ai (Python + FastAPI).
+ASVAB prep platform. The product ships under the **MissionReady** brand; the codebase uses the technical name `asvab-platform` and the `@asvab/*` namespace for workspace packages.
+
+Monorepo for web (Next.js 16.2), worker (Node + BullMQ), and ai (Python + FastAPI).
 
 ## Quick start (local dev)
 
@@ -19,5 +21,4 @@ pnpm dev
 ## Packages
 
 - `packages/db` — Drizzle schema + migrations
-- `packages/api-schemas` — Zod schemas shared by web and worker
 - `packages/config` — shared tsconfig and biome config
