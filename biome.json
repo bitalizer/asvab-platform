@@ -20,7 +20,7 @@
   },
   "overrides": [
     {
-      "include": ["apps/web/components/ui/**"],
+      "include": ["apps/web/src/components/ui/**"],
       "linter": {
         "rules": {
           "suspicious": {
