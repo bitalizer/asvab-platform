@@ -8,11 +8,13 @@
     "start": "next start",
     "lint": "biome check .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "e2e": "playwright test",
+    "e2e:headed": "playwright test --headed"
   },
   "dependencies": {
-    "@better-auth/drizzle-adapter": "^1.6.11",
     "@asvab/db": "workspace:*",
+    "@better-auth/drizzle-adapter": "^1.6.11",
     "better-auth": "^1.6.11",
     "next": "16.2.6",
     "react": "19.2.4",
@@ -21,6 +23,7 @@
   },
   "devDependencies": {
     "@asvab/config": "workspace:*",
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
