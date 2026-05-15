@@ -1,5 +1,5 @@
 {
-  "extends": "@mr/config/tsconfig.base.json",
+  "extends": "@asvab/config/tsconfig.base.json",
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "noEmit": true,

@@ -1,5 +1,5 @@
 {
-  "name": "@mr/db",
+  "name": "@asvab/db",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,7 +18,7 @@
     "db:studio": "drizzle-kit studio"
   },
   "devDependencies": {
-    "@mr/config": "workspace:*",
+    "@asvab/config": "workspace:*",
     "@types/pg": "^8.20.0",
     "dotenv": "^17.4.2",
     "drizzle-kit": "^0.31.10",

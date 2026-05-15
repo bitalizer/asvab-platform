@@ -1,28 +1,28 @@
 services:
   postgres:
     image: postgres:16-alpine
-    container_name: mr-postgres
+    container_name: asvab-postgres
     environment:
       POSTGRES_USER: dev
       POSTGRES_PASSWORD: dev
-      POSTGRES_DB: missionready
+      POSTGRES_DB: asvab
     ports:
       - '5432:5432'
     volumes:
-      - mr-pg-data:/var/lib/postgresql/data
+      - asvab-pg-data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U dev -d missionready']
+      test: ['CMD-SHELL', 'pg_isready -U dev -d asvab']
       interval: 5s
       timeout: 5s
       retries: 5
 
   redis:
     image: redis:7-alpine
-    container_name: mr-redis
+    container_name: asvab-redis
     ports:
       - '6379:6379'
     volumes:
-      - mr-redis-data:/data
+      - asvab-redis-data:/data
     healthcheck:
       test: ['CMD', 'redis-cli', 'ping']
       interval: 5s
@@ -30,5 +30,5 @@ services:
       retries: 5
 
 volumes:
-  mr-pg-data:
-  mr-redis-data:
+  asvab-pg-data:
+  asvab-redis-data:

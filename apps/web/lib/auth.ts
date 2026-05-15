@@ -1,5 +1,5 @@
+import { getDb } from '@asvab/db';
 import { drizzleAdapter } from '@better-auth/drizzle-adapter';
-import { getDb } from '@mr/db';
 import { betterAuth } from 'better-auth';
 import { admin } from 'better-auth/plugins';
 import { getEnv } from './env';
