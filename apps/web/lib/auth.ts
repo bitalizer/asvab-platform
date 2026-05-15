@@ -2,6 +2,8 @@ import { getDb } from '@asvab/db';
 import { drizzleAdapter } from '@better-auth/drizzle-adapter';
 import { betterAuth } from 'better-auth';
 import { admin } from 'better-auth/plugins';
+import { emailAdapter } from './email';
+import { resetPasswordEmail, verifyEmail } from './email-templates';
 import { getEnv } from './env';
 
 type SocialProvider = { clientId: string; clientSecret: string };
@@ -35,10 +37,15 @@ function buildAuth() {
     database: drizzleAdapter(db, { provider: 'pg' }),
     emailAndPassword: {
       enabled: true,
-      // autoSignIn=false requires email verification before login.
-      // The Resend-backed verification flow is wired in a later plan; until then,
-      // email/password signups cannot log in. Social providers work normally.
-      autoSignIn: false,
+      autoSignIn: true,
+      sendResetPassword: async ({ user, url }) => {
+        await emailAdapter.sendEmail(resetPasswordEmail(user, url));
+      },
+    },
+    emailVerification: {
+      sendVerificationEmail: async ({ user, url }) => {
+        await emailAdapter.sendEmail(verifyEmail(user, url));
+      },
     },
     socialProviders: {
       ...(google ? { google } : {}),

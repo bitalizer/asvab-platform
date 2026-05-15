@@ -1,4 +1,5 @@
 import { Toaster } from '@/components/ui/sonner';
+import { BRAND } from '@/lib/brand';
 import type { Metadata } from 'next';
 import { Instrument_Serif, Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
@@ -29,8 +30,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'MissionReady',
-  description: 'Pass the ASVAB. Pick the job you actually want.',
+  title: BRAND.name,
+  description: BRAND.tagline,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

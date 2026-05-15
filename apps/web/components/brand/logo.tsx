@@ -1,3 +1,4 @@
+import { BRAND } from '@/lib/brand';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
@@ -15,7 +16,7 @@ export function Logo({ href = '/', className, size = 'md' }: LogoProps) {
   };
   const content = (
     <span className={cn('font-display font-bold tracking-tight text-ink', sizes[size], className)}>
-      MissionReady
+      {BRAND.name}
     </span>
   );
   return href ? <Link href={href}>{content}</Link> : content;
