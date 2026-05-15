@@ -4,15 +4,17 @@ packages:
 
 # pnpm v10+ blocks lifecycle scripts by default for supply-chain safety.
 # These packages legitimately need install-time native binaries:
-#   - @biomejs/biome → linter/formatter native binary
-#   - esbuild        → bundler used transitively by drizzle-kit (and later Vitest, Vite)
-#   - sharp          → Next.js image optimization (libvips bindings)
-#   - unrs-resolver  → Rust-based module resolver used by ESLint config
+#   - @biomejs/biome  → linter/formatter native binary
+#   - esbuild         → bundler used transitively by drizzle-kit and Vitest
+#   - msgpackr-extract → native msgpack codec used by BullMQ for queue payload serialization
+#   - sharp           → Next.js image optimization (libvips bindings)
+#   - unrs-resolver   → Rust-based module resolver used by ESLint config
 # If `pnpm install` reports ignored build scripts, audit the package, then
 # add it here. Do NOT add packages speculatively; only ones that have
 # legitimately triggered the gate and have been reviewed for safety.
 allowBuilds:
   "@biomejs/biome": true
   esbuild: true
+  msgpackr-extract: true
   sharp: true
   unrs-resolver: true
