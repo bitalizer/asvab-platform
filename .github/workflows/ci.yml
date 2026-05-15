@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  ts-checks:
+    name: TypeScript workspace
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: dev
+          POSTGRES_PASSWORD: dev
+          POSTGRES_DB: asvab
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U dev -d asvab"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://dev:dev@localhost:5432/asvab
+      REDIS_URL: redis://localhost:6379
+      BETTER_AUTH_SECRET: ci-secret-must-be-at-least-32-characters-long-for-schema
+      BETTER_AUTH_URL: http://localhost:3000
+      AI_SERVICE_URL: http://localhost:8000
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Apply database migrations
+        run: pnpm --filter '@asvab/db' db:migrate
+
+      - name: Lint
+        run: pnpm biome check .
+
+      - name: Typecheck (all packages)
+        run: |
+          pnpm --filter '@asvab/web' typecheck
+          pnpm --filter '@asvab/worker' typecheck
+          pnpm --filter '@asvab/db' typecheck
+
+      - name: Test
+        run: pnpm --filter '@asvab/web' test
+
+      - name: Build
+        run: |
+          pnpm --filter '@asvab/web' build
+          pnpm --filter '@asvab/worker' build
+
+  python-checks:
+    name: Python AI service
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/ai
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v8.1.0
+        with:
+          version: latest
+
+      - name: Sync dependencies
+        run: uv sync --frozen
+
+      - name: Lint
+        run: uv run ruff check .
+
+      - name: Format check
+        run: uv run ruff format --check .
+
+      - name: Test
+        run: uv run pytest -q
