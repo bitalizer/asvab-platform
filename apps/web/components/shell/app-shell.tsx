@@ -1,4 +1,4 @@
-import type { SessionUser } from '@/lib/session';
+import type { SessionUser } from '@/lib/data';
 import type { ReactNode } from 'react';
 import { MobileBottomNav } from './mobile-bottom-nav';
 import { Sidebar } from './sidebar';

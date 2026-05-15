@@ -1,7 +1,7 @@
 import { Icon } from '@/components/primitives/icon';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import type { SessionUser } from '@/lib/session';
+import type { SessionUser } from '@/lib/data';
 import type { ReactNode } from 'react';
 
 type TopbarProps = {

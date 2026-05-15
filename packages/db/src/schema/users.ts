@@ -79,3 +79,7 @@ export const adminRoles = pgTable(
     index('admin_roles_user_id_idx').on(table.userId),
   ],
 );
+
+export type UserProfile = typeof userProfiles.$inferSelect;
+export type NewUserProfile = typeof userProfiles.$inferInsert;
+export type AdminRole = typeof adminRoles.$inferSelect;
