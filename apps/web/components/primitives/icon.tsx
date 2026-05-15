@@ -38,6 +38,7 @@ import {
   Target,
   Timer,
   Trophy,
+  User,
   X,
   Zap,
 } from 'lucide-react';
@@ -84,6 +85,7 @@ const ICON_MAP = {
   target: Target,
   timer: Timer,
   trophy: Trophy,
+  user: User,
   wrench: Cog,
   atom: Sparkles,
   x: X,
