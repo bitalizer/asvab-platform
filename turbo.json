@@ -1,6 +1,15 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [".env"],
+  "globalDependencies": [
+    ".env",
+    ".env.*",
+    "tsconfig.json",
+    "biome.json",
+    "pnpm-workspace.yaml",
+    "pnpm-lock.yaml",
+    "packages/config/tsconfig.base.json",
+    "packages/config/biome.json"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -12,7 +21,7 @@
     },
     "lint": {},
     "typecheck": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^typecheck"]
     },
     "test": {
       "dependsOn": ["^build"],

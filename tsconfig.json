@@ -1,9 +1,4 @@
 {
   "files": [],
-  "references": [
-    { "path": "./apps/web" },
-    { "path": "./apps/worker" },
-    { "path": "./packages/db" },
-    { "path": "./packages/api-schemas" }
-  ]
+  "references": []
 }
