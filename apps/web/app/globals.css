@@ -1,23 +1,92 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import "../styles/tokens.css";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
+  /* Colors — every prototype token surfaces as a Tailwind utility */
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-line-strong: var(--line-strong);
+  --color-brand: var(--brand);
+  --color-brand-press: var(--brand-press);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-ink: var(--brand-ink);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-success-deep: var(--success-deep);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-deep: var(--danger-deep);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-warning-deep: var(--warning-deep);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Branch colors */
+  --color-branch-army: var(--branch-army);
+  --color-branch-navy: var(--branch-navy);
+  --color-branch-marines: var(--branch-marines);
+  --color-branch-af: var(--branch-af);
+  --color-branch-cg: var(--branch-cg);
+  --color-branch-space: var(--branch-space);
+
+  /* Fonts — variables set by next/font in layout.tsx */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-inter-tight);
+  --font-serif: var(--font-instrument-serif);
+  --font-mono: var(--font-jetbrains-mono);
+
+  /* Radii */
+  --radius: var(--r);
+  --radius-pill: var(--r-pill);
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+
+  /* Shadows */
+  --shadow-card: var(--shadow-1);
+  --shadow-elevated: var(--shadow-2);
+  --shadow-hover: var(--shadow-hover);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-feature-settings: "cv11", "ss01";
+  font-size: 15px;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+/* Typographic helpers — extend the Tailwind font-display/font-serif/font-mono utilities
+   with the prototype's letter-spacing, weight, and line-height. */
+.text-display {
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  line-height: 1.05;
+}
+.text-serif-ed {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.text-mono-num {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-feature-settings: "zero", "cv01";
 }

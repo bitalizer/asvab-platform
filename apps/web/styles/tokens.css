@@ -1,0 +1,82 @@
+:root {
+  /* Neutrals — warm stone */
+  --bg: #fafaf9;
+  --bg-soft: #f5f5f4;
+  --surface: #ffffff;
+  --surface-2: #fafaf9;
+  --surface-3: #f5f5f4;
+  --ink: #1c1917;
+  --ink-2: #44403c;
+  --ink-3: #78716c;
+  --ink-4: #a8a29e;
+  --line: #e7e5e4;
+  --line-2: #f5f5f4;
+  --line-strong: #d6d3d1;
+
+  /* Brand — military olive */
+  --brand: #4a5d23;
+  --brand-press: #3d4e1e;
+  --brand-soft: #edf0e0;
+  --brand-deep: #1f2a0e;
+  --brand-ink: #2e3b17;
+
+  /* Secondary accent — deep navy */
+  --accent: #1e3a5f;
+  --accent-soft: #e6edf5;
+
+  /* States */
+  --success: #166534;
+  --success-soft: #ecfdf5;
+  --success-deep: #14532d;
+  --danger: #991b1b;
+  --danger-soft: #fef2f2;
+  --danger-deep: #7f1d1d;
+  --warning: #b45309;
+  --warning-soft: #fef3c7;
+  --warning-deep: #78350f;
+  --info: #1e40af;
+  --info-soft: #eff6ff;
+
+  /* Branch palettes */
+  --branch-army: #4a5d23;
+  --branch-navy: #1e3a5f;
+  --branch-marines: #6b1a1a;
+  --branch-af: #1e3a8a;
+  --branch-cg: #1e40af;
+  --branch-space: #1e1b3a;
+
+  /* Radii */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r: 10px;
+  --r-md: 12px;
+  --r-lg: 14px;
+  --r-xl: 18px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(28, 25, 23, 0.04), 0 1px 0 rgba(28, 25, 23, 0.02);
+  --shadow-2: 0 2px 6px rgba(28, 25, 23, 0.06), 0 1px 0 rgba(28, 25, 23, 0.02);
+  --shadow-hover: 0 4px 16px rgba(28, 25, 23, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0908;
+  --bg-soft: #14110f;
+  --surface: #1a1714;
+  --surface-2: #14110f;
+  --surface-3: #221e1a;
+  --ink: #fafaf9;
+  --ink-2: #d6d3d1;
+  --ink-3: #a8a29e;
+  --ink-4: #78716c;
+  --line: #2a2622;
+  --line-2: #1f1c19;
+  --line-strong: #44403c;
+  --brand-soft: #1f2810;
+  --success-soft: #0f2b1a;
+  --danger-soft: #2a1414;
+  --warning-soft: #2a1f0e;
+  --info-soft: #14213a;
+  --accent-soft: #14213a;
+}
