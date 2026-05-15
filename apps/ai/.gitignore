@@ -1,0 +1,8 @@
+# Python-uv
+.venv
+
+# Caches
+__pycache__/
+*.py[cod]
+.ruff_cache/
+.pytest_cache/
