@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+.next/
+dist/
+build/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs
+*.log
+.turbo/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.uv-cache/
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+
+# Test
+coverage/
+.vitest/
+playwright-report/
+test-results/
+
+# Railway
+.railway/
