@@ -10,7 +10,8 @@
       "**/prototype/**",
       "**/docs/**",
       "**/.turbo/**",
-      "**/playwright-report/**"
+      "**/playwright-report/**",
+      "**/next-env.d.ts"
     ]
   }
 }
